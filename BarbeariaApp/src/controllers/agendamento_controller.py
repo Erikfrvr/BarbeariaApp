@@ -48,4 +48,3 @@ class Agendamentocontroller:
 
         data_obj=datetime.strptime(data,"%d/%m/%y")
 
-    
