@@ -1,5 +1,3 @@
-
-
 from datetime import datetime
 
 class Agendamentocontroller:
@@ -42,10 +40,4 @@ class Agendamentocontroller:
 
     def handleAddAgendamento (self,e):
         cliete=self.tela.input_cliente.value
-        data=self.tela.input_data.value
-        hora=self.tela.input_hora.value
-        servico=self.tela.input_servico.value
-
-        data_obj=datetime.strptime(data,"%d/%m/%y")
-        oi=1
-
+        data=self.tela
