@@ -47,4 +47,5 @@ class Agendamentocontroller:
         servico=self.tela.input_servico.value
 
         data_obj=datetime.strptime(data,"%d/%m/%y")
+        oi=1
 
