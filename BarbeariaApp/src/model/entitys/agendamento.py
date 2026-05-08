@@ -42,7 +42,7 @@ class Agendamento:
     def observacoes(self):
         self.__observacoes=observacoes
 
-        
+
 
 
 
