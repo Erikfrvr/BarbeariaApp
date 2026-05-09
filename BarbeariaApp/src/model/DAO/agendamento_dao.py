@@ -23,3 +23,4 @@ class Agendamento_DAO:
         for a in agendamentos:
             if a ["id"]==id:
                 return a
+        return None
