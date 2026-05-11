@@ -42,6 +42,18 @@ class Agendamento:
     def observacoes(self):
         self.__observacoes=observacoes
 
+    def __eq__(self,other):
+        return self.id_agendamento==other.id_agendamento
+
+    def agendamentoDict(self):
+        return {
+            "id":self.id_agendamento,
+            "nome":self.nome,
+            "data":self.data,
+            "hora":self.hora,
+            "observacoes": self.observacoes
+        }
+
 
 
 
