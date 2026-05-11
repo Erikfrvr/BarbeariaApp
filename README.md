@@ -6,7 +6,7 @@ O sistema atende tanto o cliente quanto o dono da barbearia:
 * **Área do Cliente:** Formulário simples onde o cliente digita o nome, escolhe a data e agenda o horário do corte.
 * **Área do Barbeiro:** Um painel de gestão com uma tabela (Data Table) mostrando todos os horários marcados. O barbeiro pode excluir agendamentos e adicionar observações (ex: "cliente prefere degradê na zero").
 
-**Regras de Negócio (O diferencial):** O sistema é blindado contra bagunça na agenda. Se o cliente tentar marcar um corte no horário de almoço do barbeiro (12h às 13h) ou escolher um horário que outro cliente já pegou, o app bloqueia a ação na hora e exibe um erro na tela.
+**Regras de Negócio (O diferencial):** Se o cliente tentar marcar um corte no horário de almoço do barbeiro (12h às 13h) ou escolher um horário que outro cliente já pegou, o app bloqueia a ação na hora e exibe um aviso na tela.
 
 ## Tecnologias Usadas
 * **Python** 
