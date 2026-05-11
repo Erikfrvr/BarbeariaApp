@@ -54,6 +54,15 @@ class Agendamento:
             "observacoes": self.observacoes
         }
 
+    @staticmethod
+    def dict_to_object(data):
+        return Agendamento(
+            data["id"],
+            data["nome"],
+            data["data"],
+            data["hora"],
+            data.get("observacoes","")
+    )
 
 
 
