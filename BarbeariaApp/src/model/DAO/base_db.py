@@ -10,3 +10,7 @@ class BaseDB:
         self.__path=os.path.join(diretorio_atual, file_db)
         self.__file_db=file_db
 
+        # Inicializa o arquivo JSON caso nao exista na maquina
+        if not os.path.exists(self.__path):
+            with open(self.__path,"w",encoding="utf-8") as file:
+                json.dump([],file)
