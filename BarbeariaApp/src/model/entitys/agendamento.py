@@ -39,7 +39,7 @@ class Agendamento:
         return self.__observacoes
 
     @observacoes.setter
-    def observacoes(self):
+    def observacoes(self,observacoes):
         self.__observacoes=observacoes
 
     def __eq__(self,other):
@@ -54,6 +54,15 @@ class Agendamento:
             "observacoes": self.observacoes
         }
 
+    @staticmethod
+    def dict_to_object(data):
+        return Agendamento(
+            data["id"],
+            data["nome"],
+            data["data"],
+            data["hora"],
+            data.get("observacoes","")
+    )
 
 
 
