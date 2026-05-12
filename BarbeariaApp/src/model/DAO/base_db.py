@@ -33,9 +33,18 @@ class BaseDB:
         try:
             with open(self.__path,"w",encoding="utf-8") as file:
                 list_data_base.append(data)
-                # Salva com indentacao para legibilidade do JSON
+# Salva com indentacao deixando o JSON legivel
                 json.dump(list_data_base,file,ensure_ascii=False,indent=4)
         except Exception as e:
-            print("Erro no salve:", e)
+            print("Erro no salve:",e)
+
+# Sobrescreve o banco com uma nova lista
+            def salveList(self, lista):
+                try:
+                    with open(self.__path,"w",encoding="utf-8") as file:
+                        json.dump(lista, file,ensure_ascii=False,indent=4)
+                except Exception as e:
+                    print("Erro no salveList:",e)
+
 
 
