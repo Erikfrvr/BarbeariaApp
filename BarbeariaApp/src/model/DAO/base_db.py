@@ -15,7 +15,7 @@ class BaseDB:
             with open(self.__path,"w",encoding="utf-8") as file:
                 json.dump([],file)
 
-# Leitura do arquivo JSON tratando erros possiveis
+# Leitura do JSON tratando os erros possiveis
     def readList(self)->list:
         try:
             with open(self.__path,"r",encoding="utf-8") as file:
@@ -26,3 +26,16 @@ class BaseDB:
         except Exception as e:
             print("Erro ao ler:",e)
             return []
+
+# Adiciona um novo registro e preserva o anterior
+    def salve(self,data):
+        list_data_base=self.readList()
+        try:
+            with open(self.__path,"w",encoding="utf-8") as file:
+                list_data_base.append(data)
+                # Salva com indentacao para legibilidade do JSON
+                json.dump(list_data_base,file,ensure_ascii=False,indent=4)
+        except Exception as e:
+            print("Erro no salve:", e)
+
+
