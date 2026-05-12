@@ -39,7 +39,7 @@ class Agendamento:
         return self.__observacoes
 
     @observacoes.setter
-    def observacoes(self):
+    def observacoes(self,observacoes):
         self.__observacoes=observacoes
 
     def __eq__(self,other):
