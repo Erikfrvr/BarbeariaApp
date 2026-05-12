@@ -1,4 +1,4 @@
-from src.model.base_db import BaseDB
+from
 
 class Agendamento_DAO:
     def __init__(self):
