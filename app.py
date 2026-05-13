@@ -1,4 +1,5 @@
+import flet as ft
 from src.main.handleProcess import app
-from flet import run
 
-run(app)
+if __name__ == "__main__":
+    ft.app(target=app)
