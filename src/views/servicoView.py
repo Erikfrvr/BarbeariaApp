@@ -1,88 +1,63 @@
-from flet import *
+import flet as ft
 
-
-class ServicoView(View):
+class ServicoView:
 
     def __init__(self):
-        super().__init__()
-
-        # Campos
-        self.nomeServico = TextField(
+        self.nomeServico = ft.TextField(
             label="Nome do Serviço",
-            prefix_icon=Icons.PERSON,
+            prefix_icon=ft.Icons.PERSON,
             col=7
         )
-
-        self.marcaServico = TextField(
+        self.marcaServico = ft.TextField(
             label="Marca",
-            prefix_icon=CupertinoIcons.CUBE_BOX_FILL,
             col=7
         )
-
-        self.valorServico = TextField(
+        self.valorServico = ft.TextField(
             label="Valor",
             prefix="R$",
             col=3
         )
-
-        self.btnCadastrarServico = ElevatedButton(
+        self.btnCadastrarServico = ft.ElevatedButton(
             text="Adicionar",
-            icon=CupertinoIcons.PLUS
+            icon=ft.Icons.ADD
         )
-
-        # Tabela
-        self.tabelaServico = DataTable(
+        self.tabelaServico = ft.DataTable(
             columns=[
-                DataColumn(label=Text("ID")),
-                DataColumn(label=Text("Nome")),
-                DataColumn(label=Text("Marca")),
-                DataColumn(label=Text("Valor R$")),
-            ]
+                ft.DataColumn(label=ft.Text("ID")),
+                ft.DataColumn(label=ft.Text("Nome")),
+                ft.DataColumn(label=ft.Text("Marca")),
+                ft.DataColumn(label=ft.Text("Valor R$")),
+            ],
+            rows=[]
         )
-
-        self.route = "/servicos"
 
     def build(self):
-
-        modalServico = Container(
-            content=Column(
+        modalServico = ft.Container(
+            content=ft.Column(
                 controls=[
-                    ResponsiveRow(
-                        controls=[
-                            self.nomeServico,
-                            self.valorServico
-                        ],
-                        alignment=MainAxisAlignment.SPACE_AROUND
+                    ft.ResponsiveRow(
+                        controls=[self.nomeServico, self.valorServico],
+                        alignment=ft.MainAxisAlignment.SPACE_AROUND
                     ),
-
-                    ResponsiveRow(
-                        controls=[
-                            self.marcaServico,
-                            self.btnCadastrarServico
-                        ],
-                        alignment=MainAxisAlignment.SPACE_AROUND
+                    ft.ResponsiveRow(
+                        controls=[self.marcaServico, self.btnCadastrarServico],
+                        alignment=ft.MainAxisAlignment.SPACE_AROUND
                     ),
                 ]
             ),
             padding=10,
-            border=border.all(2, "#E9EEF6"),
+            border=ft.border.all(2, "#E9EEF6"),
             height=160,
-            col=12
         )
 
-        modalTabela = Container(
-            content=ResponsiveRow(
+        modalTabela = ft.Container(
+            content=ft.ResponsiveRow(
                 controls=[self.tabelaServico],
-                alignment=MainAxisAlignment.CENTER
+                alignment=ft.MainAxisAlignment.CENTER
             ),
-            padding=padding.all(10)
+            padding=ft.padding.all(10)
         )
 
-        return [
-            Column(
-                controls=[
-                    modalServico,
-                    modalTabela
-                ]
-            )
-        ]
+        return ft.Column(
+            controls=[modalServico, modalTabela]
+        )

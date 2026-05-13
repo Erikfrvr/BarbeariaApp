@@ -1,8 +1,8 @@
 from .base_db import BaseDB
+
 class Agendamento_DAO:
     def __init__(self):
-        # conecta com o arquivo agendamento.json
-        self.db = BaseDB("agendamento.json")
+        self.db = BaseDB("agendamentos.json")
 
     def _gerar_id(self, agendamentos: list) -> int:
         if not agendamentos:
@@ -14,7 +14,7 @@ class Agendamento_DAO:
             raise ValueError("Agendamento inválido!")
         try:
             agendamentos = self.db.read()
-            data["id"] = self._gerar_id(agendamentos)  # ← ID gerado aqui
+            data["id"] = self._gerar_id(agendamentos)
             self.db.write(data)
         except Exception as e:
             print(f"Erro ao salvar agendamento: {e}")
@@ -49,13 +49,13 @@ class Agendamento_DAO:
             print(f"Erro ao buscar agendamento: {e}")
             return None
 
-    def atualizarAgendamento(self, id_agendamento: int, novos_dados: dict):  # ← método novo
+    def atualizarAgendamento(self, id_agendamento: int, novos_dados: dict):
         try:
             agendamentos = self.db.read()
             for i, a in enumerate(agendamentos):
                 if a["id"] == id_agendamento:
                     agendamentos[i].update(novos_dados)
-                    agendamentos[i]["id"] = id_agendamento  # garante que o ID não muda
+                    agendamentos[i]["id"] = id_agendamento
                     self.db.salveList(agendamentos)
                     return
             raise ValueError(f"Agendamento com ID {id_agendamento} não encontrado!")

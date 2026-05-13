@@ -12,4 +12,3 @@ def agendamento_constructor(page):
 
     # 3. Retorna o layout pronto para ser desenhado
     return view.build()
-# hgghb
