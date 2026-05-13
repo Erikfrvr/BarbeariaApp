@@ -16,7 +16,7 @@ class BaseDB:
                 json.dump([],file)
 
 # Leitura do JSON tratando os erros possiveis
-    def readList(self)->list:
+    def read(self)->list:
         try:
             with open(self.__path,"r",encoding="utf-8") as file:
                 return json.load(file)
@@ -28,8 +28,8 @@ class BaseDB:
             return []
 
 # Adiciona um novo registro e preserva o anterior
-    def salve(self,data):
-        list_data_base=self.readList()
+    def write(self,data):
+        list_data_base=self.read()
         try:
             with open(self.__path,"w",encoding="utf-8") as file:
                 list_data_base.append(data)
@@ -39,12 +39,12 @@ class BaseDB:
             print("Erro no salve:",e)
 
 # Sobrescreve o banco com uma nova lista
-            def salveList(self, lista):
-                try:
-                    with open(self.__path,"w",encoding="utf-8") as file:
-                        json.dump(lista, file,ensure_ascii=False,indent=4)
-                except Exception as e:
-                    print("Erro no salveList:",e)
+    def salveList(self, lista):
+        try:
+            with open(self.__path,"w",encoding="utf-8") as file:
+                json.dump(lista, file,ensure_ascii=False,indent=4)
+        except Exception as e:
+            print("Erro no salveList:",e)
 
 
 
