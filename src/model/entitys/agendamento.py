@@ -4,7 +4,7 @@ class Agendamento:
         self.__nome=nome
         self.__data=data
         self.__hora=hora
-        self.observacoes=observacoes
+        self.__observacoes=observacoes
 
     @property
     def id_agendamento(self):
