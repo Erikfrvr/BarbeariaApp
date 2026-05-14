@@ -1,5 +1,6 @@
 import flet as ft
 
+
 class AgendamentoView:
     def __init__(self):
         LARGURA_TOTAL = 400
@@ -10,6 +11,10 @@ class AgendamentoView:
             prefix_icon=ft.Icons.PERSON,
             border_radius=10,
             color=ft.Colors.WHITE,
+            text_style=ft.TextStyle(color=ft.Colors.WHITE),
+            label_style=ft.TextStyle(color=ft.Colors.WHITE70),
+            filled=True,
+            bgcolor=ft.Colors.GREY_800,
             width=LARGURA_TOTAL,
         )
 
@@ -19,6 +24,10 @@ class AgendamentoView:
             border_radius=10,
             max_length=10,
             color=ft.Colors.WHITE,
+            text_style=ft.TextStyle(color=ft.Colors.WHITE),
+            label_style=ft.TextStyle(color=ft.Colors.WHITE70),
+            filled=True,
+            bgcolor=ft.Colors.GREY_800,
             hint_text="Ex: 15/05/2026",
             width=LARGURA_METADE,
         )
@@ -29,6 +38,10 @@ class AgendamentoView:
             border_radius=10,
             max_length=5,
             color=ft.Colors.WHITE,
+            text_style=ft.TextStyle(color=ft.Colors.WHITE),
+            label_style=ft.TextStyle(color=ft.Colors.WHITE70),
+            filled=True,
+            bgcolor=ft.Colors.GREY_800,
             hint_text="Ex: 14:30",
             width=LARGURA_METADE,
         )
@@ -43,6 +56,8 @@ class AgendamentoView:
             ],
             border_radius=10,
             color=ft.Colors.WHITE,
+            filled=True,
+            bgcolor=ft.Colors.GREY_800,
             width=LARGURA_TOTAL,
         )
 
@@ -54,6 +69,10 @@ class AgendamentoView:
             max_lines=3,
             border_radius=10,
             color=ft.Colors.WHITE,
+            text_style=ft.TextStyle(color=ft.Colors.WHITE),
+            label_style=ft.TextStyle(color=ft.Colors.WHITE70),
+            filled=True,
+            bgcolor=ft.Colors.GREY_800,
             hint_text="Ex: Cliente prefere degradê alto",
             width=LARGURA_TOTAL,
         )
@@ -66,6 +85,10 @@ class AgendamentoView:
             border_radius=10,
             visible=False,
             color=ft.Colors.WHITE,
+            text_style=ft.TextStyle(color=ft.Colors.WHITE),
+            label_style=ft.TextStyle(color=ft.Colors.WHITE70),
+            filled=True,
+            bgcolor=ft.Colors.GREY_800,
             width=LARGURA_TOTAL,
         )
 
@@ -80,6 +103,8 @@ class AgendamentoView:
             style=ft.ButtonStyle(
                 shape=ft.RoundedRectangleBorder(radius=10),
             ),
+            bgcolor=ft.Colors.GREEN_700,
+            color=ft.Colors.WHITE,
             width=LARGURA_TOTAL,
         )
 
@@ -91,20 +116,44 @@ class AgendamentoView:
                 ],
                 alignment=ft.MainAxisAlignment.CENTER,
             ),
+            bgcolor=ft.Colors.BLUE_GREY_700,
+            color=ft.Colors.WHITE,
             width=LARGURA_TOTAL,
         )
 
-        self.mensagem = ft.Text(value="", color=ft.Colors.AMBER_700, weight=ft.FontWeight.BOLD)
+        self.mensagem = ft.Text(
+            value="",
+            color=ft.Colors.AMBER_700,
+            weight=ft.FontWeight.BOLD,
+            size=15,
+        )
 
         self.tabela = ft.DataTable(
             visible=False,
             columns=[
-                ft.DataColumn(ft.Text("Cliente", weight="bold")),
-                ft.DataColumn(ft.Text("Data", weight="bold")),
-                ft.DataColumn(ft.Text("Hora", weight="bold")),
-                ft.DataColumn(ft.Text("Serviço", weight="bold")),
-                ft.DataColumn(ft.Text("Observação", weight="bold")),
-                ft.DataColumn(ft.Text("Ações", weight="bold")),
+                ft.DataColumn(
+                    ft.Text("Cliente", weight="bold", color="white")
+                ),
+
+                ft.DataColumn(
+                    ft.Text("Data", weight="bold", color="white")
+                ),
+
+                ft.DataColumn(
+                    ft.Text("Hora", weight="bold", color="white")
+                ),
+
+                ft.DataColumn(
+                    ft.Text("Serviço", weight="bold", color="white")
+                ),
+
+                ft.DataColumn(
+                    ft.Text("Observação", weight="bold", color="white")
+                ),
+
+                ft.DataColumn(
+                    ft.Text("Ações", weight="bold", color="white")
+                ),
             ],
             rows=[],
         )
@@ -116,41 +165,105 @@ class AgendamentoView:
             padding=20,
             content=ft.Column(
                 scroll=ft.ScrollMode.AUTO,
-                spacing=15,
+                spacing=18,
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                 controls=[
-                    ft.Text("BARBEARIA_APP - NOVO AGENDAMENTO", size=24, weight="bold", color="white"),
+
+                    ft.Icon(
+                        ft.Icons.CONTENT_CUT,
+                        size=55,
+                        color=ft.Colors.AMBER,
+                    ),
+
+                    ft.Text(
+                        "BARBEARIA APP",
+                        size=28,
+                        weight=ft.FontWeight.BOLD,
+                        color=ft.Colors.WHITE,
+                    ),
+
+                    ft.Text(
+                        "Novo Agendamento",
+                        size=18,
+                        color=ft.Colors.WHITE70,
+                    ),
+
                     self.input_cliente,
+
                     ft.Row(
-                        controls=[self.input_data, self.input_hora],
+                        controls=[
+                            self.input_data,
+                            self.input_hora
+                        ],
                         alignment=ft.MainAxisAlignment.CENTER,
                         spacing=20
                     ),
+
                     self.input_servico,
+
                     self.input_obs,
+
                     self.btn_agendar,
-                    ft.Divider(height=40, color="white24"),
+
+                    ft.Divider(
+                        height=35,
+                        color=ft.Colors.WHITE24
+                    ),
+
                     self.btn_barbeiro,
+
                     self.input_senha,
+
                     self.mensagem,
+
                     self.tabela,
                 ],
             ),
         )
 
-    def addLinhaTabela(self, id, cliente, data, hora, servico, obs, on_delete):
+    def addLinhaTabela(
+        self,
+        id,
+        cliente,
+        data,
+        hora,
+        servico,
+        obs,
+        on_delete
+    ):
+
         self.tabela.rows.append(
             ft.DataRow(
                 cells=[
-                    ft.DataCell(ft.Text(cliente, color="white")),
-                    ft.DataCell(ft.Text(data, color="white")),
-                    ft.DataCell(ft.Text(hora, color="white")),
-                    ft.DataCell(ft.Text(servico, color="white")),
-                    ft.DataCell(ft.Text(obs if obs else "-", size=12, color="white70")),
+                    ft.DataCell(
+                        ft.Text(cliente, color="white")
+                    ),
+
+                    ft.DataCell(
+                        ft.Text(data, color="white")
+                    ),
+
+                    ft.DataCell(
+                        ft.Text(hora, color="white")
+                    ),
+
+                    ft.DataCell(
+                        ft.Text(servico, color="white")
+                    ),
+
+                    ft.DataCell(
+                        ft.Text(
+                            obs if obs else "-",
+                            size=12,
+                            color="white70"
+                        )
+                    ),
+
                     ft.DataCell(
                         ft.IconButton(
                             ft.Icons.DELETE,
                             icon_color="red400",
+                            tooltip="Excluir agendamento",
                             on_click=on_delete
                         )
                     ),
@@ -162,6 +275,13 @@ class AgendamentoView:
         self.mensagem.value = texto
 
     def limparCampos(self):
-        for field in [self.input_cliente, self.input_data, self.input_hora, self.input_obs]:
+
+        for field in [
+            self.input_cliente,
+            self.input_data,
+            self.input_hora,
+            self.input_obs
+        ]:
             field.value = ""
+
         self.input_servico.value = None
