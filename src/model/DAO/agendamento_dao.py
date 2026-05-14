@@ -1,8 +1,16 @@
+import os
 from .base_db import BaseDB
+
 
 class Agendamento_DAO:
     def __init__(self):
-        self.db = BaseDB("agendamentos.json")
+        diretorio_atual = os.path.dirname(os.path.abspath(__file__))
+
+        caminho_db = os.path.abspath(
+            os.path.join(diretorio_atual, "..", "..", "infrastructure", "database", "agendamentos.json")
+        )
+
+        self.db = BaseDB(caminho_db)
 
     def _gerar_id(self, agendamentos: list) -> int:
         if not agendamentos:

@@ -119,7 +119,9 @@ class AgendamentoView:
                 spacing=15,
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                 controls=[
-                    ft.Text("BARBEARIA_APP - NOVO AGENDAMENTO", size=24, weight="bold", color="white"),
+                    ft.Text("BARBEARIA APP", size=28, weight=ft.FontWeight.BOLD,
+                            color=ft.Colors.WHITE),
+                    ft.Text("Novo Agendamento",size=18,color=ft.Colors.WHITE70),
                     self.input_cliente,
                     ft.Row(
                         controls=[self.input_data, self.input_hora],

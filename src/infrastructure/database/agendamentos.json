@@ -1,4 +1,10 @@
 [
-
-
+    {
+        "cliente": "João",
+        "data": "21/05/2026",
+        "hora": "18:00",
+        "servico": "Corte + Barba",
+        "obs": "degradê alto",
+        "id": 1
+    }
 ]
